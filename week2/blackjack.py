@@ -1,4 +1,5 @@
 import random
+import time
 
 suits = ["Spades", "Hearts", "Clubs", "Diamonds"]
 suits_values = {"Spades": "\u2664", "Hearts": "\u2661",
@@ -52,27 +53,36 @@ if __name__ == "__main__":
     print_cards(player_hand, "Player's cards:", False)
 
     while True:
+        time.sleep(0.6)
         draw_new = input("\nDraw a new card? (y/n)")
         if draw_new == "y":
+            time.sleep(0.6)
             new_card = deck.pop()
             player_hand.append(new_card)
             print(f"Player drew a/an {new_card}")
+            time.sleep(0.6)
             sum_player = sum([card.value for card in player_hand])
             if sum_player > 21:
                 # print computer's full hand if player has lost
                 print_cards(dealer_hand, "Computer's cards:", False)
             else:
                 print_cards(dealer_hand, "Computer's cards:", True)
+            time.sleep(0.6)
             print_cards(player_hand, "Player's cards:", False)
             if sum([card.value for card in player_hand]) > 21:
+                time.sleep(0.6)
                 print("\nUser went over 21. COMPUTER WINS!\n")
                 break
         elif draw_new == "n":
+            time.sleep(0.6)
             print("User holds.")
+            time.sleep(0.6)
             print_cards(dealer_hand, "Computer's cards:", False)
+            time.sleep(0.6)
             print_cards(player_hand, "Player's cards:", False)
             sum_player = sum([card.value for card in player_hand])
             sum_dealer = sum([card.value for card in dealer_hand])
+            time.sleep(0.6)
             if (sum_player > sum_dealer):  # assuming dealer never draws a new card
                 print("\nPLAYER WINS!\n")
             else:  # assuming dealer wins ties
